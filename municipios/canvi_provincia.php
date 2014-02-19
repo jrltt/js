@@ -1,10 +1,6 @@
 <?php
-	//sleep(1);
 	include("open_db.php");
-		
 	$id_prov = $_GET["id_prov"];
-	//echo $id_com;
-
 	$sql = "SELECT * FROM municipis where id_prov='$id_prov' order by id_mun";
 
 	$result = mysql_query($sql);
