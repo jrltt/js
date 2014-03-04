@@ -14,14 +14,17 @@ addEvent (
 		{
 			var input = document.forms['formMails'].getElementsByTagName('input'),
 				 newInput = document.createElement('input');
-					
+
 			if ( count < 2) { // solo se pueden hacer 3
-				if ( count == 1) {
-					document.getElementById('add').className = 'minus';
-				}
+
 				newInput.type = 'text';
 				newInput.name = 'mail[]';
-				newInput.className = 'current';
+				if ( count == 1) { //chapuza para esconder el boton de +
+					newInput.className = 'mclass';
+					document.getElementById('add').className = 'hidden';
+				} else {
+					newInput.className = 'current';
+				}
 				console.log('new input: '+newInput);
 				for (i = 0; i < input.length; i++) {
 					if (input[i].className.match('current')) {
@@ -30,12 +33,23 @@ addEvent (
 						valueInput = input[i].value; //guardo lo introducido por el usuario para ponerlo luego en el value=
 					}
 				}
+				
+				if ( count == 1) {
+					document.getElementById('add').className = 'hidden';
+				} 
+				//ultima posicion
 				var e = document.forms['formMails'].getElementsByTagName('input')[lastInputCurrent];
+				//nuevo input
 				var i = newInput;
+				//inserto el nuevo input
 				insertAfter(e,i);
+				
+
 				input[lastInputCurrent].setAttribute('value', valueInput); //le añado el atributo value con el valor introducido por el usuario
 				input[lastInputCurrent].className = 'mclass';
+				
 				//console.log(input[i]);
+				
 				count++;
 				console.log(count);
 			} else {
@@ -44,21 +58,26 @@ addEvent (
 			}
 		}
 	);
-addEvent (
-	document.getElementById('add'),
-	'click',
-	function ()
-	{
-		var boton = document.getElementById('add'),
-				padre = document.getElementsByTagName('input');
-		if (boton.className.match('minus')) {
-			padre.removeChild( padre.getElementsByName('mail[]')[1] );
-		}
-	}
-);
+// var lastIndex = 0;
+// addEvent (
+// 	document.getElementById('add'),
+// 	'click',
+// 	function ()
+// 	{
+// 		var boton = document.getElementById('add'),
+// 				padre = document.forms.formMails,
+// 					input = padre.getElementsByTagName('input');
+
+// 		if ( boton.className.match('minus') ) {		
+// 			padre.removeChild(input[this.lastInputCurrent]);
+// 		}
+// 		//input[lastIndex].className = 'current';
+// 	}
+// );
+
 //evento para añadir el valor, en el caso que añada varios campos a la vez
 addEvent (
-	document.forms['formMails'],
+	document.forms.formMails,
 	'click',
 	function ()
 	{

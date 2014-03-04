@@ -1,4 +1,4 @@
-@import url('../style.css');
+@import url('http://jrltt.net/test/fp/style.css');*/
 
 .wrap {
 	width: 50%;
@@ -11,6 +11,10 @@
 	letter-spacing: 1px;
 	color: white;
 	background-color: #B3B3B3;
+}
+span.hidden {
+	display: none;
+	visibility: hidden;
 }
 span.plus {
 	background-image: url("http://www.conductr.net/wp-content/themes/passage-child/img/plus.png");
