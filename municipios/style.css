@@ -1,0 +1,10 @@
+body {
+	font: 12px/14px Helvetica;
+}
+aside {
+	float: left;
+	margin-right: 10%;
+}
+iframe {
+	border: 1px solid black;
+}
