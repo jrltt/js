@@ -1,9 +1,6 @@
 <?php
-	//sleep(1);
 	include("open_db.php");
-	//include('canvi_provincia.php');
 	$id_com = $_GET["id_com"];
-	//echo $id_com;
 
 	$sql = "SELECT * FROM provincies where id_com=$id_com order by id_prov";
 
@@ -14,8 +11,8 @@
 	    die($message);
 	}
 		
-	echo "<select name=\"provincia\" onchange=\"canvi_provincia(this.value)\">";
-
+	echo "<select name=\"provincia\" onchange=\"canvi_provincia(this.value), limpiar(2)\">";
+	echo '<option></option>';
 	while ($row = mysql_fetch_assoc($result)) {
 		echo "<option value=".$row['id_prov'].">".$row['provincia']."</option>";
 	}
