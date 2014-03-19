@@ -19,12 +19,21 @@ addEvent (
 
 				newInput.type = 'text';
 				newInput.name = 'mail[]';
+<<<<<<< HEAD
+				if ( count == 1) { //chapuza para esconder el boton de +
+					newInput.className = 'mclass';
+					document.getElementById('add').className = 'hidden';
+				} else {
+					newInput.className = 'current';
+				}
+=======
 				//if ( count == 1) { //chapuza para esconder el boton de +
 				//	newInput.className = 'mclass';
 				//	document.getElementById('add').className = 'hidden';
 				//} else {
 				newInput.className = 'current';
 				//}
+>>>>>>> b743124babf4ed231b05304b9ac2100b1329fc58
 				console.log('new input: '+newInput);
 				for (i = 0; i < input.length; i++) {
 					if (input[i].className.match('current')) {
@@ -35,7 +44,11 @@ addEvent (
 				}
 				
 				if ( count == 1) {
+<<<<<<< HEAD
+					document.getElementById('add').className = 'hidden';
+=======
 					document.getElementById('add').className = 'minus';
+>>>>>>> b743124babf4ed231b05304b9ac2100b1329fc58
 				} 
 				//ultima posicion
 				var e = document.forms['formMails'].getElementsByTagName('input')[lastInputCurrent];
@@ -58,6 +71,24 @@ addEvent (
 			}
 		}
 	);
+<<<<<<< HEAD
+// var lastIndex = 0;
+// addEvent (
+// 	document.getElementById('add'),
+// 	'click',
+// 	function ()
+// 	{
+// 		var boton = document.getElementById('add'),
+// 				padre = document.forms.formMails,
+// 					input = padre.getElementsByTagName('input');
+
+// 		if ( boton.className.match('minus') ) {		
+// 			padre.removeChild(input[this.lastInputCurrent]);
+// 		}
+// 		//input[lastIndex].className = 'current';
+// 	}
+// );
+=======
 var lastIndex = 0;
 addEvent (
 	document.getElementById('add'),
@@ -80,11 +111,16 @@ addEvent (
 		input[lastIndex].className = 'current';
 	}
 );
+>>>>>>> b743124babf4ed231b05304b9ac2100b1329fc58
 
 //evento para añadir el valor, en el caso que añada varios campos a la vez
 addEvent (
 	document.forms.formMails,
+<<<<<<< HEAD
+	'click',
+=======
 	'blur',
+>>>>>>> b743124babf4ed231b05304b9ac2100b1329fc58
 	function ()
 	{
 		var mailName = document.getElementsByName('mail[]');
