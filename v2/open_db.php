@@ -1,10 +1,6 @@
 <?php
-	$conn = mysql_connect("localhost", "root", "1234");
-	if (!$conn) {
-	    $log->error('Could not connect: ' . mysql_error());
-	    die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db("arthropoda", $conn) or die('Could not select jbalmes database.');
-	mysql_set_charset('utf8',$conn);
+	$conn = mysqli_connect("localhost", "root", "1234") or die ('No se puede conectar con la BBDD'. mysqli_error($conn));
+	mysqli_select_db($conn , "arthropoda") or die ('Could not select jbalmes database.');
+	mysqli_set_charset($conn,'utf8');
 ?>
 

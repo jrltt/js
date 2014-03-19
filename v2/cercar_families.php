@@ -7,17 +7,12 @@
 	if ($id_ordre != "") {
 		$sql = "SELECT distinct id_family, family from VTAXO V, BUG B where V.id_family=B.id_taxo and id_order=$id_ordre order by id_family;";
 
-		$result = mysql_query($sql);
-
-		if (!$result) {
-			 $message  = 'Invalid query: ' . mysql_error() . "\n";
-			 die($message);
-		}
+		$result = mysqli_query($conn, $sql) or die ('Error:'.$sql.' - '.mysqli_error($conn));
 		
 		echo "<span>Família: </span>";
 		echo "<select name=\"familia\" onchange=\"canvi_familia(this.value)\">";
 		echo "<option value=''>Selecciona una família</option>";
-		while ($row = mysql_fetch_assoc($result)) {
+		while ($row = mysqli_fetch_assoc($result)) {
 			echo "<option value=".$row['id_family'].">".$row['family']."</option>";
 		}
 		echo "</select>";

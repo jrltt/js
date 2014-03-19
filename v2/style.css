@@ -4,21 +4,34 @@ body {
 h2, h3 {
 	margin: 0 0 20px;
 }
-ul {
-	/* list-style: none; */
-	/* float:left; */
-}
-/*li {
-	max-width: 170px;
-	float:left;
-	font: 18px/22px Helvetica;
-	font-weight: 100;
+
+.item { 
+	font-size: 4em;
+	/* line-height: 0.8em; */ 
 	text-transform: uppercase;
-}*/
-.item { width: 25%; }
+	font-family: Helvetica, Arial;
+	font-weight: 100;
+	color: #f3f3f3;
+	margin-left: 3%;
+}
+.item:first-child { margin-left: 0;}
+.item:hover { color: black; }
 img {
 	margin:0;
 	padding:0;
+}
+#insectes img {
+	max-height: 53px;
+}
+#insectes img:first-child {
+	margin-left:3%;
+}
+.json h1 {
+	font-size: 4em;
+	text-decoration: underline;
+	text-transform: uppercase;
+	font-family: Helvetica, Arial;
+	margin:0;
 }
 .wrap {
 	width: 50%;
@@ -30,11 +43,11 @@ img {
 	margin-right: 5%;
 }
 .menu p {
-	font:0.7em/1.4em Helvetica;
+	font:0.7em/1.4em Helvetica, Arial;
 }
 #classe span, #ordre span, #familia span {
 	text-transform: uppercase;
-	font:0.6em/1.4em Helvetica;
+	font:0.6em/1.4em Helvetica, Arial;
 	/* margin: 0 10px 0 0; */
 	display: block;
 	margin-bottom: 5px;
@@ -57,11 +70,11 @@ img {
 }
 
 .bug-box h3 {
-	font: 0.8em/1.2em Helvetica;
+	font: 0.8em/1.2em Helvetica, Arial;
 	text-transform: uppercase;
 }
 .bug-box p {
-	font: 0.8em/1.2em Helvetica;
+	font: 0.8em/1.2em Helvetica, Arial;
 }
 select {
 	width: 150px;

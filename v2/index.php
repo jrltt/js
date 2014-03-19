@@ -16,15 +16,10 @@
 				<select name="classe" onchange="canvi_classe(this.value)">
 				<?php
 					$sql = "SELECT DISTINCT id_class, class FROM VTAXO V, BUG B WHERE V.id_family=B.id_taxo";
-					$result = mysql_query($sql);
-
-					if (!$result) {
-						$message  = 'Invalid query: ' . mysql_error() . "\n";
-						die($message);
-					}
+					$result = mysqli_query($conn, $sql) or die ('Error:'.$result.' - '.mysqli_error($conn));
 
 					echo "<option value=''>Selecciona una classe</option>";
-					while ($row = mysql_fetch_assoc($result)) {
+					while ($row = mysqli_fetch_assoc($result)) {
 						echo "<option value=".$row['id_class'].">".$row['class']."</option>";
 					}
 				?>

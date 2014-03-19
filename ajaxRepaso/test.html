@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<head>
+		<title>Mostrar personas</title>
+		<script>
+		function mostrarPersonas()
+		{
+			var xmlhttp,
+				txt, 
+				jsoninfo,
+				jsondatos,
+				output = 'Datos <br/>';
+				
+			if (window.XMLHttpRequest) {
+			  xmlhttp = new XMLHttpRequest();
+			}
+
+			xmlhttp.open("GET","test.json",true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					txt=xmlhttp.responseText;
+					// console.log(txt);
+					//http://www.javascriptkit.com/dhtmltutors/ajaxgetpost4.shtml
+					jsoninfo = eval("("+txt+")"); //retrieve result as an JavaScript object
+					console.log('jsoninfo: '+jsoninfo);
+					jsondatos = jsoninfo.Agenda;
+					console.log(jsondatos);
+					
+					for (var i = 0; i < jsondatos.length; i++) {
+						output += '<ul>';
+						output += '<li>' + jsondatos[i].id + '</li>';
+						output += '<li>' + jsondatos[i].name + '</li>';
+						output += '<li>' + jsondatos[i].age + '</li>';
+						output += '<li>' + jsondatos[i].gender + '</li>';
+						output += '<li>' + jsondatos[i].company + '</li>';
+						output += '<li>' + jsondatos[i].email + '</li>';
+						output += '</ul>';
+					};
+					
+					document.getElementById('personas').innerHTML = output;
+					// var output = '<ul>';
+					// for (var i = 0; i < rssentries.length; i++){
+					//  output += '<li>';
+					//  output += rssentries[i].genere + ' ' + rssentries[i].especie;
+					//  output += '</li>';
+					// }
+					// output += '</ul>';
+					// document.getElementById("insectes").innerHTML = output;
+				}
+			}
+		}
+		</script>
+	</head>
+	<body onload='mostrarPersonas()'>
+		<h1>Lista de personas</h1>
+		<div id="personas"></div>
+	</body>
+</html>

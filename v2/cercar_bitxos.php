@@ -13,16 +13,11 @@
 		from BUG B, FOTO F 
 		where id_taxo=$id_familia and B.id_bug=F.id_bug and ordre=1";
 
-		$result = mysql_query($sql);
+		$result = mysqli_query($conn, $sql) or die ('Error:'.$sql.' - '.mysqli_error($conn));
 
-		if (!$result) {
-			 $message  = 'Invalid query: ' . mysql_error() . "\n";
-			 die($message);
-		}
-		
 		echo "<h3>Bichos</h3>";
 		//echo "<table border='1'>";
-		while ($row = mysql_fetch_assoc($result)) {
+		while ($row = mysqli_fetch_assoc($result)) {
 			echo '<div class="bug-box">';
 			echo '<h3>'.$row['genere'].'</h3>';
 			echo '<a href="'.$row['pic'].'"><img src="'.$row['thumb'].'" /></a>';

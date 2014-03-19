@@ -20,17 +20,12 @@ $fh = fopen($myFile, 'w') or die("can't open file");
 $sql = "SELECT genere, especie, b.nom_fitxer FROM BUG JOIN foto AS b ON b.id_bug = bug.id_bug WHERE genere IS NOT NULL AND especie IS NOT NULL";
 
 
-$result = mysql_query($sql);
-
-if (!$result) {
-    $message  = 'Invalid query: ' . mysql_error() . "\n";
-    die($message);
-}
+$result = mysqli_query($conn, $sql) or die ('Error:'.$sql.' - '.mysqli_error($conn));
 	
 $arrayAJson = array();
 $i = -1;
 $gen = null;
-while ($row = mysql_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	
 	if ( $gen != $row['genere']  ) {
 		//$arrayBD['foto'] = $imgs; //insertr la primera

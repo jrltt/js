@@ -21,12 +21,12 @@ function llistar_insectes()
 				//http://www.javascriptkit.com/dhtmltutors/ajaxgetpost4.shtml
 				jsondata = eval("("+txt+")"); //retrieve result as an JavaScript object
 				rsinsectes = jsondata.insectes;
-				output = '<ul>';
+				output = '<div class="hola">';
 				for (var i = 0; i < rsinsectes.length; i++) {
-					output += '<li class="item">';
+					output += '<span class="item">';
 				 	output += rsinsectes[i].genere + ' ' + rsinsectes[i].especie;
 					rsfotos = rsinsectes[i].fotos;
-					output += '<br />';
+					// output += '<br />';
 
 					for (var j = 0; j < rsfotos.length; j++) {
 	                    nom_arxiu = rsinsectes[i].fotos[j];
@@ -38,9 +38,9 @@ function llistar_insectes()
 					}
 					//outputfotos += '</ul>';
 				 	// output += outputfotos;
-				 	output += '</li>';
+				 	output += '</span>';
 				}
-				output += '</ul>';
+				output += '</div>';
 				document.getElementById("insectes").innerHTML = output;
 			} else { //imagen de ajax
 

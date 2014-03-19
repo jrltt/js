@@ -15,7 +15,7 @@ Volem escriure un fitxer insectes.json amb la següent sintaxi:
 */
 
 	include("open_db.php");
-	$myFile = "/Users/joaquin/Sites/quickphp/js/form2/v2/jsonMarc.json";
+	$myFile = "/Users/joaquin/Sites/quickphp/js/form2/v2/json_bueno.json";
 	$fh = fopen($myFile, 'w') or die("can't open file");
 	//$sql = "SELECT genere, especie, b.nom_fitxer FROM BUG JOIN foto AS b ON b.id_bug = bug.id_bug WHERE genere IS NOT NULL AND especie IS NOT NULL";
 	$sql = "SELECT genere, especie, titol, nom_cat, bug.notes, bug.id_bug, nom_fitxer 
@@ -24,13 +24,9 @@ Volem escriure un fitxer insectes.json amb la següent sintaxi:
 		where genere is not NULL and especie is not NULL
 		ORDER BY `bug`.`genere` ASC";
 
-	$result = mysql_query($sql);
+	$result = mysqli_query($conn, $sql) or die ('Error:'.$sql.' - '.mysqli_error($conn));
 
-	if (!$result) {
-	    $message  = 'Invalid query: ' . mysql_error() . "\n";
-	    die($message);
-	}
-		
+	
 
 	//array que se llenara con los datos
 	$arrayJSON = array();
@@ -45,7 +41,7 @@ Volem escriure un fitxer insectes.json amb la següent sintaxi:
 	fwrite($fh, "{\n");
 	fwrite($fh, "\"insectes\": ");
 	$total = 0;
-	while ( $row = mysql_fetch_assoc($result) ) {
+	while ( $row = mysqli_fetch_assoc($result) ) {
 			$gen2 = $row['genere'];
 		
 		// if ( $gen != $row['genere'] ) {

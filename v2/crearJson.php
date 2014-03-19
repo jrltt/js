@@ -20,18 +20,13 @@ $fh = fopen($myFile, 'w') or die("can't open file");
 $sql = "SELECT genere, especie, b.nom_fitxer FROM BUG JOIN foto AS b ON b.id_bug = bug.id_bug WHERE genere IS NOT NULL AND especie IS NOT NULL";
 
 
-$result = mysql_query($sql);
+$result = mysqli_query($conn, $sql) or die ('Error:'.$sql.' - '.mysqli_error($conn));
 
-if (!$result) {
-    $message  = 'Invalid query: ' . mysql_error() . "\n";
-    die($message);
-}
-	
 //fwrite($fh, "{\n");
 //fwrite($fh, "\"insectes\": [\n");
 $return = array();
 $i = 0;
-while ($row = mysql_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	//echo $row['genere']." ".$row['especie']."<br />";
 	$newArr['genere'] = $row['genere'];
 	$newArr['especie'] = $row['especie'];
