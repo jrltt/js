@@ -4,6 +4,7 @@
 	<head>
 		<title>Mostrar personas</title>
 		<script>
+		
 		function mostrarPersonas()
 		{
 			var xmlhttp,
@@ -27,17 +28,18 @@
 					console.log('jsoninfo: '+jsoninfo);
 					jsondatos = jsoninfo.Agenda;
 					console.log(jsondatos);
-					
+					output += '<select onchange="mostrarInfo(this.value)">';
+					output += '<option>Selecciona uno ...</option>';
 					for (var i = 0; i < jsondatos.length; i++) {
-						output += '<ul>';
-						output += '<li>' + jsondatos[i].id + '</li>';
-						output += '<li>' + jsondatos[i].name + '</li>';
-						output += '<li>' + jsondatos[i].age + '</li>';
-						output += '<li>' + jsondatos[i].gender + '</li>';
-						output += '<li>' + jsondatos[i].company + '</li>';
-						output += '<li>' + jsondatos[i].email + '</li>';
-						output += '</ul>';
+						
+						output += '<option value='+jsondatos[i].id+'>' + jsondatos[i].name + '</option>';
+						// output += '<li>' +  + '</li>';
+						// output += '<li>' + jsondatos[i].age + '</li>';
+						// output += '<li>' + jsondatos[i].gender + '</li>';
+						// output += '<li>' + jsondatos[i].company + '</li>';
+						// output += '<li>' + jsondatos[i].email + '</li>';
 					};
+					output += '</select>';
 					
 					document.getElementById('personas').innerHTML = output;
 					// var output = '<ul>';
@@ -51,10 +53,34 @@
 				}
 			}
 		}
+		function mostrarInfo(param)
+		{
+			// console.log(param);
+			var xmlhttp, respuesta, jsonArray,jsonDatos, output = '';
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			}
+			xmlhttp.open('GET','test.json', true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange = function() {
+				if ( xmlhttp. readyState == 4 && xmlhttp.status == 200 ) {
+					respuesta = xmlhttp.responseText;
+					jsonArray = eval("("+respuesta+")");
+					// console.log(jsonArray);
+					jsonDatos = jsonArray.Agenda[param];
+					// console.log(jsonDatos);
+					output += jsonDatos.about;
+					document.getElementById('info').innerHTML = output;
+				} else {
+					document.getElementById('info').innerHTML = 'Cargando..';
+				}
+			}
+		}
 		</script>
 	</head>
 	<body onload='mostrarPersonas()'>
 		<h1>Lista de personas</h1>
 		<div id="personas"></div>
+		<div id="info"></div>
 	</body>
 </html>

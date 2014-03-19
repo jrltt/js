@@ -19,21 +19,12 @@ addEvent (
 
 				newInput.type = 'text';
 				newInput.name = 'mail[]';
-<<<<<<< HEAD
 				if ( count == 1) { //chapuza para esconder el boton de +
 					newInput.className = 'mclass';
 					document.getElementById('add').className = 'hidden';
 				} else {
 					newInput.className = 'current';
 				}
-=======
-				//if ( count == 1) { //chapuza para esconder el boton de +
-				//	newInput.className = 'mclass';
-				//	document.getElementById('add').className = 'hidden';
-				//} else {
-				newInput.className = 'current';
-				//}
->>>>>>> b743124babf4ed231b05304b9ac2100b1329fc58
 				console.log('new input: '+newInput);
 				for (i = 0; i < input.length; i++) {
 					if (input[i].className.match('current')) {
